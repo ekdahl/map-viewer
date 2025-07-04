@@ -16,8 +16,6 @@ namespace MapViewer
 		{
 			InitializeComponent();
 
-			map.Children.Add(layer);
-
 			_layer = layer;
 			_map = map;
 		}
@@ -25,8 +23,6 @@ namespace MapViewer
 		public LayerSettingsControl(MapTileLayerBase layer, Map map)
 		{
 			InitializeComponent();
-
-			map.Children.Add(layer);
 
 			_layer = layer;
 			_map = map;
@@ -42,8 +38,8 @@ namespace MapViewer
 
 		public double LayerOpacity
 		{
-			get => OpacitySlider.Value / 100.0;
-			set => OpacitySlider.Value = Math.Clamp(value * 100.0, 0.0, 100.0);
+			get => OpacitySlider.Value;
+			set => OpacitySlider.Value = Math.Clamp(value, 0.0, 100.0);
 		}
 
 		private void EnabledToggleSwitch_Toggled(object sender, RoutedEventArgs e)
@@ -57,7 +53,15 @@ namespace MapViewer
 			}
 			else
 			{
-				_map.Children.Remove(_map);
+				_map.Children.Remove(_layer);
+			}
+		}
+
+		private void OpacitySlider_ValueChanged(object sender, Microsoft.UI.Xaml.Controls.Primitives.RangeBaseValueChangedEventArgs e)
+		{
+			if (_layer != null)
+			{
+				_layer.Opacity = e.NewValue / 100.0;
 			}
 		}
 	}

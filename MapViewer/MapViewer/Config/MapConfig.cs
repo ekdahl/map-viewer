@@ -16,7 +16,7 @@ namespace MapViewer.Config
 	public abstract class LayerBase
 	{
 		public string Name { get; set; } = string.Empty;
-		public double Opacity { get; set; } = 1.0;
+		public double Opacity { get; set; } = 100.0;
 		public bool IsVisible { get; set; } = true;
 	}
 

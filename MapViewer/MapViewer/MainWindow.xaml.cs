@@ -2,6 +2,8 @@ using MapControl;
 using MapViewer.Config;
 using Microsoft.UI.Xaml;
 using System;
+using System.Text.Json;
+using Windows.ApplicationModel.DataTransfer;
 
 namespace MapViewer
 {
@@ -14,9 +16,12 @@ namespace MapViewer
 		{
 			InitializeComponent();
 			AddLayers(GetSampleConfig());
+
+			// Uncomment to get a sample config in the clipboard
+			//SerializeConfig(GetSampleConfig());
 		}
 
-		private MapConfig GetSampleConfig()
+		private static MapConfig GetSampleConfig()
 		{
 			MapConfig config = new();
 
@@ -24,13 +29,16 @@ namespace MapViewer
 			{
 				Name = "OpenStreetMap",
 				UriTemplate = @"https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+				Opacity = 100.0,
 			};
 
 			WmsLayer layer = new()
 			{
 				Name = "Fastighetsgränser",
 				ServiceUri = "https://karta.raa.se/lmfastighet?TRANSPARENT=true",
-				Layers = "granser,text"
+				Layers = "granser,text",
+				Opacity = 50.0,
+				IsVisible = false,
 			};
 
 			config.Layers.Add(xyzLayer);
@@ -39,11 +47,13 @@ namespace MapViewer
 			return config;
 		}
 
+		private string SerializeConfig(MapConfig config)
+		{
+			return JsonSerializer.Serialize(config);
+		}
+
 		private void AddLayers(MapConfig config)
 		{
-
-			//List<MapTileLayerBase> layers = [];
-
 			foreach (LayerBase layer in config.Layers)
 			{
 				LayerSettingsControl control;
@@ -59,7 +69,9 @@ namespace MapViewer
 						
 						control = new(wmsImageLayer, Map)
 						{
-							LayerName = layer.Name
+							LayerName = layer.Name,
+							IsLayerEnabled = layer.IsVisible,
+							LayerOpacity = layer.Opacity,
 						};
 
 						LayersStackPanel.Children.Add(control);
@@ -74,7 +86,9 @@ namespace MapViewer
 						
 						control = new(wmtsTileLayer, Map)
 						{
-							LayerName = layer.Name
+							LayerName = layer.Name,
+							IsLayerEnabled = layer.IsVisible,
+							LayerOpacity = layer.Opacity,
 						};
 
 						LayersStackPanel.Children.Add(control);
@@ -84,12 +98,15 @@ namespace MapViewer
 						MapTileLayer mapTileLayer = new()
 						{
 							TileSource = new TileSource() { UriTemplate = xyzLayer.UriTemplate },
-							SourceName = layer.Name
+							SourceName = layer.Name,
 						};
 						
 						control = new(mapTileLayer, Map)
 						{
-							LayerName = layer.Name
+							LayerName = layer.Name,
+							IsLayerEnabled = layer.IsVisible,
+							LayerOpacity = layer.Opacity,
+
 						};
 						LayersStackPanel.Children.Add(control);
 						break;
