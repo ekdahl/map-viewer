@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "MapViewer (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "MapViewer (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

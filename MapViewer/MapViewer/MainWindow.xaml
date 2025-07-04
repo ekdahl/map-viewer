@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="MapViewer.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MapViewer"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+	xmlns:map="using:MapControl"
+    Title="MapViewer">
+
+    <Window.SystemBackdrop>
+        <MicaBackdrop />
+    </Window.SystemBackdrop>
+
+    <Grid x:Name="MainGrid">
+		<map:Map x:Name="Map" Center="58.1,14" ZoomLevel="15">
+			<!--map:MapTileLayer
+                TileSource="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+                SourceName="OpenStreetMap"
+                        Description="© [OpenStreetMap contributors](http://www.openstreetmap.org/copyright)"/>
+			<map:WmsImageLayer ServiceUri="https://karta.raa.se/lmfastighet?TRANSPARENT=true" WmsLayers="granser,text"/>
+			<map:WmsImageLayer ServiceUri="https://karta.raa.se/geo/arkreg_v1.0/wms?TRANSPARENT=TRUE" WmsLayers="socken"/>
+			<map:WmsImageLayer ServiceUri="https://karta.raa.se/geo/arkreg_v1.0/wms?TRANSPARENT=TRUE" WmsLayers="landskap"/-->
+
+		</map:Map>
+		<Expander VerticalAlignment="Top" Margin="5">
+			<Expander.Header>
+				<FontIcon Glyph="&#xE81E;"/>
+			</Expander.Header>
+			<StackPanel x:Name="LayersStackPanel" Orientation="Vertical">
+				<!--TextBlock FontWeight="SemiBold" Margin="0,5">Base maps</TextBlock>
+				<local:LayerSettingsControl x:Name="Ortofoto" LayerName="Ortofoto"/>
+				<local:LayerSettingsControl LayerName="Ortofoto 1960"/>
+				<TextBlock FontWeight="SemiBold" Margin="0,5">Overlays</TextBlock>
+				<local:LayerSettingsControl LayerName="Fastighetsgränser"/-->
+			</StackPanel>
+		</Expander>
+
+
+	</Grid>
+</Window>
