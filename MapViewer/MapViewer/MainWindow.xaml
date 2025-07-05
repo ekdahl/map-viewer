@@ -23,8 +23,9 @@
 			<map:WmsImageLayer ServiceUri="https://karta.raa.se/lmfastighet?TRANSPARENT=true" WmsLayers="granser,text"/>
 			<map:WmsImageLayer ServiceUri="https://karta.raa.se/geo/arkreg_v1.0/wms?TRANSPARENT=TRUE" WmsLayers="socken"/>
 			<map:WmsImageLayer ServiceUri="https://karta.raa.se/geo/arkreg_v1.0/wms?TRANSPARENT=TRUE" WmsLayers="landskap"/-->
-
+			<map:MapScale HorizontalAlignment="Center" VerticalAlignment="Bottom" Canvas.ZIndex="1000"/>
 		</map:Map>
+		
 		<Expander VerticalAlignment="Top" Margin="5">
 			<Expander.Header>
 				<FontIcon Glyph="&#xE81E;"/>

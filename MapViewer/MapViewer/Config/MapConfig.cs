@@ -12,6 +12,7 @@ namespace MapViewer.Config
 	[JsonDerivedType(typeof(WmsLayer), "WMS")]
 	[JsonDerivedType(typeof(WmtsLayer), "WMTS")]
 	[JsonDerivedType(typeof(XyzLayer), "XYZ")]
+	[JsonDerivedType(typeof(XyzLayer), "TMS")]
 
 	public abstract class LayerBase
 	{
@@ -38,6 +39,12 @@ namespace MapViewer.Config
 
 	// XYZ tile server
 	public class XyzLayer : LayerBase
+	{
+		public string UriTemplate { get; set; } = string.Empty; // e.g. https://.../{z}/{x}/{y}.png
+	}
+
+	// Tile map server
+	public class TmsLayer : LayerBase
 	{
 		public string UriTemplate { get; set; } = string.Empty; // e.g. https://.../{z}/{x}/{y}.png
 	}
