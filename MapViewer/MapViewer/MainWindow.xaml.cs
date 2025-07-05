@@ -4,6 +4,7 @@ using Microsoft.UI.Xaml;
 using System;
 using System.Text.Json;
 using Windows.ApplicationModel.DataTransfer;
+using static System.Net.WebRequestMethods;
 
 namespace MapViewer
 {
@@ -27,11 +28,27 @@ namespace MapViewer
 
 			config.Layers.Add(new XyzLayer
 			{
-				Name = "Topografisk",
+				Name = "Topografisk (Lantmäteriet)",
 				UriTemplate = @"https://minkarta.lantmateriet.se/map/topowebbcache?layer=topowebb&tilematrixset=3857&Service=WMTS&Request=GetTile&TileMatrix={z}&TileCol={x}&TileRow={y}",
 				//UriTemplate = @"https://karta.raa.se/lmtopowebb/1.0.0/topowebb/default/3857/{z}/{y}/{x}.png",
 				Opacity = 100.0,
 				IsVisible = true
+			});
+
+			config.Layers.Add(new TmsLayer
+			{
+				Name = "Topografisk (Hitta.se)",
+				UriTemplate = @"https://static.hitta.se/tile/v3/4/{z}/{x}/{y}?v=27032025",
+				Opacity = 100.0,
+				IsVisible = false
+			});
+
+			config.Layers.Add(new XyzLayer
+			{
+				Name = "Terräng (Google)",
+				UriTemplate = @"http://mt1.google.com/vt/lyrs=p&x={x}&y={y}&z={z}",
+				Opacity = 100.0,
+				IsVisible = false
 			});
 
 			config.Layers.Add(new WmsLayer
@@ -45,15 +62,30 @@ namespace MapViewer
 
 			config.Layers.Add(new TmsLayer
 			{
-				Name = "Hitta",
+				Name = "Vägkarta (Hitta.se)",
 				UriTemplate = @"https://static.hitta.se/tile/v3/0/{z}/{x}/{y}?v=27032025",
+				Opacity = 100.0,
+				IsVisible = false
+			});
+
+			config.Layers.Add(new TmsLayer
+			{
+				Name = "Vägkarta (Eniro)",
+				UriTemplate = @"http://map.eniro.com/geowebcache/service/tms1.0.0/map/{z}/{x}/{y}.png",
+				Opacity = 100.0,
+				IsVisible = false
+			});
+			config.Layers.Add(new XyzLayer
+			{
+				Name = "Vägkarta (Google)",
+				UriTemplate = @"http://mt0.google.com/vt/x={x}&y={y}&z={z}",
 				Opacity = 100.0,
 				IsVisible = false
 			});
 
 			config.Layers.Add(new XyzLayer
 			{
-				Name = "OpenStreetMap",
+				Name = "Vägkarta (OpenStreetMap)",
 				UriTemplate = @"https://tile.openstreetmap.org/{z}/{x}/{y}.png",
 				Opacity = 100.0,
 				IsVisible = false
@@ -72,11 +104,35 @@ namespace MapViewer
 
 			config.Layers.Add(new WmsLayer
 			{
-				Name = "Flygbild",
+				Name = "Flygbild (Lantmäteriet)",
 				ServiceUri = "https://minkarta.lantmateriet.se/map/ortofoto",
 				Layers = "Ortofoto_0.5,Ortofoto_0.4,Ortofoto_0.25,Ortofoto_0.16",
 				Opacity = 100.0,
 				IsVisible = false,
+			});
+
+			config.Layers.Add(new TmsLayer
+			{
+				Name = "Flygbild (Eniro)",
+				UriTemplate = @"http://map.eniro.com/geowebcache/service/tms1.0.0/aerial/{z}/{x}/{y}.jpeg",
+				Opacity = 100.0,
+				IsVisible = false
+			});
+
+			config.Layers.Add(new TmsLayer
+			{
+				Name = "Flygbild (Hitta.se)",
+				UriTemplate = @"https://static.hitta.se/tile/v3/1/{z}/{x}/{y}?v=27032025",
+				Opacity = 100.0,
+				IsVisible = false
+			});
+
+			config.Layers.Add(new XyzLayer
+			{
+				Name = "Flygbild (Google)",
+				UriTemplate = @"http://khm1.google.com/kh/v=101&x={x}&y={y}&z={z}",
+				Opacity = 100.0,
+				IsVisible = false
 			});
 
 			config.Layers.Add(new WmsLayer
@@ -99,11 +155,19 @@ namespace MapViewer
 
 			config.Layers.Add(new WmsLayer
 			{
-				Name = "Sjökort",
+				Name = "Sjökort (Lantmäteriet)",
 				ServiceUri = "https://karta.raa.se/sjokort",
 				Layers = "OgcWmsLayer0",
 				Opacity = 100.0,
 				IsVisible = false,
+			});
+
+			config.Layers.Add(new TmsLayer
+			{
+				Name = "Sjökort (Eniro)",
+				UriTemplate = @"http://map.eniro.com/geowebcache/service/tms1.0.0/nautical/{z}/{x}/{y}.jpeg",
+				Opacity = 100.0,
+				IsVisible = false
 			});
 
 			config.Layers.Add(new WmsLayer
