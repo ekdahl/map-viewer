@@ -1,10 +1,11 @@
 using MapControl;
 using MapViewer.Config;
+using Microsoft.UI;
+using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using System;
 using System.Text.Json;
-using Windows.ApplicationModel.DataTransfer;
-using static System.Net.WebRequestMethods;
+using WinRT.Interop;
 
 namespace MapViewer
 {
@@ -16,6 +17,12 @@ namespace MapViewer
 		public MainWindow()
 		{
 			InitializeComponent();
+
+			var hwnd = WindowNative.GetWindowHandle(this);
+			var windowId = Win32Interop.GetWindowIdFromWindow(hwnd);
+			var appWindow = AppWindow.GetFromWindowId(windowId);
+			appWindow.SetIcon("icon.ico");
+
 			AddLayers(GetSampleConfig());
 
 			// Uncomment to get a sample config in the clipboard
@@ -233,6 +240,24 @@ namespace MapViewer
 				IsVisible = false,
 			});
 
+			config.Layers.Add(new XyzLayer
+			{
+				Name = "Velinga 1704 (XYZ)",
+				UriTemplate = @"https://wmts.oldmapsonline.org/maps/c3ac2835-389f-413b-a807-7945ee0c8584/2025-06-30T13:58:01.258Z/{z}/{x}/{y}.png?key=8mpRUId0ULH39v2JucO5",
+				Opacity = 100.0,
+				IsVisible = false
+			});
+
+			config.Layers.Add(new WmtsLayer()
+			{
+				Name = "Velinga 1704 (WMTS)",
+				CapabilitiesUri = @"https://wmts.oldmapsonline.org/maps/c3ac2835-389f-413b-a807-7945ee0c8584/2025-06-30T13:58:01.258Z/WMTSCapabilities.xml?key=8mpRUId0ULH39v2JucO5",
+				Opacity = 100.0,
+				IsVisible = false
+			});
+			
+
+
 			return config;
 		}
 
@@ -295,7 +320,6 @@ namespace MapViewer
 							LayerName = layer.Name,
 							IsLayerEnabled = layer.IsVisible,
 							LayerOpacity = layer.Opacity,
-
 						};
 						LayersStackPanel.Children.Add(control);
 						break;
@@ -311,7 +335,6 @@ namespace MapViewer
 							LayerName = layer.Name,
 							IsLayerEnabled = layer.IsVisible,
 							LayerOpacity = layer.Opacity,
-
 						};
 						LayersStackPanel.Children.Add(control);
 						break;

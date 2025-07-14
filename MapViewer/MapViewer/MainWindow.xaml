@@ -8,11 +8,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
 	xmlns:map="using:MapControl"
+	
     Title="MapViewer">
-
-    <Window.SystemBackdrop>
-        <MicaBackdrop />
-    </Window.SystemBackdrop>
 
     <Grid x:Name="MainGrid">
 		<map:Map x:Name="Map" Center="58.1,14" ZoomLevel="15">
@@ -25,19 +22,15 @@
 			<map:WmsImageLayer ServiceUri="https://karta.raa.se/geo/arkreg_v1.0/wms?TRANSPARENT=TRUE" WmsLayers="landskap"/-->
 			<map:MapScale HorizontalAlignment="Center" VerticalAlignment="Bottom" Canvas.ZIndex="1000"/>
 		</map:Map>
-		
-		<Expander VerticalAlignment="Top" Margin="5">
-			<Expander.Header>
-				<FontIcon Glyph="&#xE81E;"/>
-			</Expander.Header>
-			<StackPanel x:Name="LayersStackPanel" Orientation="Vertical">
-				<!--TextBlock FontWeight="SemiBold" Margin="0,5">Base maps</TextBlock>
-				<local:LayerSettingsControl x:Name="Ortofoto" LayerName="Ortofoto"/>
-				<local:LayerSettingsControl LayerName="Ortofoto 1960"/>
-				<TextBlock FontWeight="SemiBold" Margin="0,5">Overlays</TextBlock>
-				<local:LayerSettingsControl LayerName="Fastighetsgränser"/-->
-			</StackPanel>
-		</Expander>
+		<StackPanel Orientation="Vertical">
+			<ComboBox PlaceholderText="Add map layers" Margin="5,5,0,0"/>
+			<Expander VerticalAlignment="Top" Margin="5">
+				<Expander.Header>
+					<FontIcon Glyph="&#xE81E;"/>
+				</Expander.Header>
+				<StackPanel x:Name="LayersStackPanel" Orientation="Vertical" />
+			</Expander>
+		</StackPanel>
 
 
 	</Grid>
