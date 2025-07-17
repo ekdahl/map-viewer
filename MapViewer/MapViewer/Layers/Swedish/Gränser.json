@@ -1,0 +1,28 @@
+{
+  "Layers": [
+    {
+      "$type": "WMS",
+      "ServiceUri": "https://karta.raa.se/lmfastighet?TRANSPARENT=true",
+      "Layers": "granser,text",
+      "Name": "Fastighetsgränser",
+      "Opacity": 100,
+      "IsVisible": false
+    },
+    {
+      "$type": "WMS",
+      "ServiceUri": "https://karta.raa.se/geo/arkreg_v1.0/wms?TRANSPARENT=true",
+      "Layers": "socken",
+      "Name": "Sockengränser",
+      "Opacity": 100,
+      "IsVisible": false
+    },
+    {
+      "$type": "WMS",
+      "ServiceUri": "https://karta.raa.se/geo/arkreg_v1.0/wms?TRANSPARENT=true",
+      "Layers": "landskap",
+      "Name": "Landskapsgränser",
+      "Opacity": 100,
+      "IsVisible": false
+    }
+  ]
+}

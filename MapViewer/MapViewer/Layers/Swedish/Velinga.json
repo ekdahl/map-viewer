@@ -1,0 +1,21 @@
+{
+  "Layers": [
+   {
+      "$type": "XYZ",
+      "UriTemplate": "https://wmts.oldmapsonline.org/maps/c3ac2835-389f-413b-a807-7945ee0c8584/2025-06-30T13:58:01.258Z/{z}/{x}/{y}.png?key=8mpRUId0ULH39v2JucO5",
+      "Name": "Velinga 1704 (XYZ)",
+      "Opacity": 100,
+      "IsVisible": false
+    },
+    {
+      "$type": "WMTS",
+      "CapabilitiesUri": "https://wmts.oldmapsonline.org/maps/c3ac2835-389f-413b-a807-7945ee0c8584/2025-06-30T13:58:01.258Z/WMTSCapabilities.xml?key=8mpRUId0ULH39v2JucO5",
+      "Layer": "",
+      "TileMatrixSet": "",
+      "Format": "image/png",
+      "Name": "Velinga 1704 (WMTS)",
+      "Opacity": 100,
+      "IsVisible": false
+    }
+  ]
+}

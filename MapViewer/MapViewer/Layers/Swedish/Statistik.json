@@ -1,0 +1,12 @@
+{
+  "Layers": [
+    {
+      "$type": "WMS",
+      "ServiceUri": "https://minkarta.lantmateriet.se/map/scb?TRANSPARENT=true",
+      "Layers": "PD.StatisticalDistribution.TotalPopulation",
+      "Name": "Befolkningstäthet",
+      "Opacity": 50,
+      "IsVisible": false
+    }
+  ]
+}

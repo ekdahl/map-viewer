@@ -1,0 +1,20 @@
+{
+  "Layers": [
+    {
+      "$type": "WMS",
+      "ServiceUri": "https://opendata-view.smhi.se/SMHI_vatten_restricted/Vattenforekomster_2022/wms?transparent=true",
+      "Layers": "Vattenforekomster_2022",
+      "Name": "Vattenförekomster 2022",
+      "Opacity": 100,
+      "IsVisible": false
+    },
+    {
+      "$type": "WMS",
+      "ServiceUri": "https://wpt-wts.smhi.se/tile/?service=WMS",
+      "Layers": "baltrad%3Aradarcomp-lightning-officialuseonly_scandinavia_wpt",
+      "Name": "Radar med blixt",
+      "Opacity": 100,
+      "IsVisible": false
+    }
+  ]
+}

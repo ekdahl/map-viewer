@@ -1,0 +1,70 @@
+{
+  "Layers": [
+    {
+      "$type": "XYZ",
+      "UriTemplate": "https://minkarta.lantmateriet.se/map/topowebbcache?layer=topowebb\u0026tilematrixset=3857\u0026Service=WMTS\u0026Request=GetTile\u0026TileMatrix={z}\u0026TileCol={x}\u0026TileRow={y}",
+      "Name": "Topografisk (Lantmäteriet)",
+      "Opacity": 100,
+      "IsVisible": true
+    },
+    {
+      "$type": "WMS",
+      "ServiceUri": "https://minkarta.lantmateriet.se/map/topowebb",
+      "Layers": "topowebbkartan_nedtonad",
+      "Name": "Nedtonad (Lantmäteriet)",
+      "Opacity": 100,
+      "IsVisible": false
+    },    {
+      "$type": "TMS",
+      "UriTemplate": "https://static.hitta.se/tile/v3/4/{z}/{x}/{y}?v=27032025",
+      "Name": "Topografisk (Hitta.se)",
+      "Opacity": 100,
+      "IsVisible": false
+    },
+    {
+      "$type": "TMS",
+      "UriTemplate": "https://static.hitta.se/tile/v3/0/{z}/{x}/{y}?v=27032025",
+      "Name": "Vägkarta (Hitta.se)",
+      "Opacity": 100,
+      "IsVisible": false
+    },
+    {
+      "$type": "TMS",
+      "UriTemplate": "http://map.eniro.com/geowebcache/service/tms1.0.0/map/{z}/{x}/{y}.png",
+      "Name": "Vägkarta (Eniro)",
+      "Opacity": 100,
+      "IsVisible": false
+    },
+    {
+      "$type": "WMS",
+      "ServiceUri": "https://karta.raa.se/sjokort",
+      "Layers": "OgcWmsLayer0",
+      "Name": "Sjökort (Lantmäteriet)",
+      "Opacity": 100,
+      "IsVisible": false
+    },
+    {
+      "$type": "TMS",
+      "UriTemplate": "http://map.eniro.com/geowebcache/service/tms1.0.0/nautical/{z}/{x}/{y}.jpeg",
+      "Name": "Sjökort (Eniro)",
+      "Opacity": 100,
+      "IsVisible": false
+    },
+    {
+      "$type": "WMS",
+      "ServiceUri": "https://karta.raa.se/lmhojdmodell",
+      "Layers": "terranglutning",
+      "Name": "Lutning (Lantmäteriet)",
+      "Opacity": 100,
+      "IsVisible": false
+    },
+    {
+      "$type": "WMS",
+      "ServiceUri": "https://karta.raa.se/lmhojdmodell",
+      "Layers": "terrangskuggning",
+      "Name": "Skuggning (Lantmäteriet)",
+      "Opacity": 100,
+      "IsVisible": false
+    }
+  ]
+}

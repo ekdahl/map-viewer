@@ -1,0 +1,49 @@
+{
+  "Layers": [
+    {
+      "$type": "WMS",
+      "ServiceUri": "https://minkarta.lantmateriet.se/map/ortofoto",
+      "Layers": "Ortofoto_0.5,Ortofoto_0.4,Ortofoto_0.25,Ortofoto_0.16",
+      "Name": "Flygbild (Lantmäteriet)",
+      "Opacity": 100,
+      "IsVisible": false
+    },
+    {
+      "$type": "TMS",
+      "UriTemplate": "http://map.eniro.com/geowebcache/service/tms1.0.0/aerial/{z}/{x}/{y}.jpeg",
+      "Name": "Flygbild (Eniro)",
+      "Opacity": 100,
+      "IsVisible": false
+    },
+    {
+      "$type": "TMS",
+      "UriTemplate": "https://static.hitta.se/tile/v3/1/{z}/{x}/{y}?v=27032025",
+      "Name": "Flygbild (Hitta.se)",
+      "Opacity": 100,
+      "IsVisible": false
+    },
+    {
+      "$type": "XYZ",
+      "UriTemplate": "http://khm1.google.com/kh/v=101\u0026x={x}\u0026y={y}\u0026z={z}",
+      "Name": "Flygbild (Google)",
+      "Opacity": 100,
+      "IsVisible": false
+    },
+    {
+      "$type": "WMS",
+      "ServiceUri": "https://minkarta.lantmateriet.se/map/historiskaortofoto",
+      "Layers": "OI.Histortho_60",
+      "Name": "Flygbild ca 1960",
+      "Opacity": 100,
+      "IsVisible": false
+    },
+    {
+      "$type": "WMS",
+      "ServiceUri": "https://minkarta.lantmateriet.se/map/historiskaortofoto",
+      "Layers": "OI.Histortho_75",
+      "Name": "Flygbild ca 1975",
+      "Opacity": 100,
+      "IsVisible": false
+    }
+  ]
+}

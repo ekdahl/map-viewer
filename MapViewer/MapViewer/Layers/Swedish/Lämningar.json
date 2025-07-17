@@ -1,0 +1,12 @@
+{
+  "Layers": [
+    {
+      "$type": "WMS",
+      "ServiceUri": "https://karta.raa.se/geo/arkreg_v1.0/wms?TRANSPARENT=true",
+      "Layers": "arkreg_v1.0:publicerade_lamningar_centrumpunkt",
+      "Name": "Lämningar",
+      "Opacity": 100,
+      "IsVisible": false
+    }
+  ]
+}
