@@ -9,8 +9,6 @@ namespace MapViewer
 	{
 		private readonly Map _map;
 		private readonly Panel _layer;
-		//private readonly MapImageLayer? _imageLayer;
-		//private readonly MapTileLayerBase? _tileLayer;
 
 		public LayerSettingsControl(MapImageLayer layer, Map map)
 		{
@@ -63,6 +61,11 @@ namespace MapViewer
 			{
 				_layer.Opacity = e.NewValue / 100.0;
 			}
+		}
+
+		private void UserControl_Unloaded(object sender, RoutedEventArgs e)
+		{
+			_map.Children.Remove(_layer);
 		}
 	}
 }

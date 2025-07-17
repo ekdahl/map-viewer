@@ -22,14 +22,19 @@
 			<map:WmsImageLayer ServiceUri="https://karta.raa.se/geo/arkreg_v1.0/wms?TRANSPARENT=TRUE" WmsLayers="landskap"/-->
 			<map:MapScale HorizontalAlignment="Center" VerticalAlignment="Bottom" Canvas.ZIndex="1000"/>
 		</map:Map>
-		<StackPanel Orientation="Vertical">
-			<ComboBox PlaceholderText="Add map layers" Margin="5,5,0,0"/>
-			<Expander VerticalAlignment="Top" Margin="5">
+		<StackPanel x:Name="LayersStackPanel" Orientation="Vertical">
+			<Button Click="OpenButton_Click" Margin="5,5,0,0">
+				<StackPanel Orientation="Horizontal">
+					<SymbolIcon Symbol="OpenFile"/>
+					<TextBlock Text="Open map collection" Margin="8,0,0,0"/>
+				</StackPanel>
+			</Button>
+			<!--Expander VerticalAlignment="Top" Margin="5">
 				<Expander.Header>
 					<FontIcon Glyph="&#xE81E;"/>
 				</Expander.Header>
 				<StackPanel x:Name="LayersStackPanel" Orientation="Vertical" />
-			</Expander>
+			</Expander-->
 		</StackPanel>
 
 

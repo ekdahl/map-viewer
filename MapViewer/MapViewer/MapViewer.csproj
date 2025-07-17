@@ -13,6 +13,7 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="LayerCollectionControl.xaml" />
     <None Remove="LayerSettingsControl.xaml" />
   </ItemGroup>
 
@@ -49,6 +50,9 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
+    <Page Update="LayerCollectionControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="LayerSettingsControl.xaml">

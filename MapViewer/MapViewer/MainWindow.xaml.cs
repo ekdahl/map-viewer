@@ -4,7 +4,13 @@ using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using System;
+using System.Text.Encodings.Web;
 using System.Text.Json;
+using System.Text.Unicode;
+using System.Threading.Tasks;
+using Windows.ApplicationModel.DataTransfer;
+using Windows.Storage;
+using Windows.Storage.Pickers;
 using WinRT.Interop;
 
 namespace MapViewer
@@ -23,11 +29,66 @@ namespace MapViewer
 			var appWindow = AppWindow.GetFromWindowId(windowId);
 			appWindow.SetIcon("icon.ico");
 
-			AddLayers(GetSampleConfig());
+			//AddLayers(GetSampleConfig());
+
+			LayerCollectionControl baseMaps = new(GetBaseMaps()) { Map = Map, HeaderText = "Base maps" };
+
+			LayersStackPanel.Children.Add(baseMaps);
 
 			// Uncomment to get a sample config in the clipboard
-			//SerializeConfig(GetSampleConfig());
+			//SampleConfigToClipboard();
 		}
+
+		private static void SampleConfigToClipboard()
+		{
+			MapConfig config = GetSampleConfig();
+
+			var options = new JsonSerializerOptions
+			{
+				WriteIndented = true,
+				Encoder = JavaScriptEncoder.Create(UnicodeRanges.All)
+			};
+
+			string json = JsonSerializer.Serialize(config, options);
+
+			var dataPackage = new DataPackage();
+			dataPackage.SetText(json);
+			Clipboard.SetContent(dataPackage);
+		}
+
+		private static MapConfig GetBaseMaps()
+		{
+			MapConfig config = new();
+
+			config.Layers.Add(new XyzLayer
+			{
+				Name = "Road map (OpenStreetMap)",
+				UriTemplate = @"https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+				Opacity = 100.0,
+				IsVisible = true
+			});
+
+			config.Layers.Add(new XyzLayer
+			{
+				Name = "Terrain (Google)",
+				UriTemplate = @"http://mt1.google.com/vt/lyrs=p&x={x}&y={y}&z={z}",
+				Opacity = 100.0,
+				IsVisible = false
+			});
+
+			config.Layers.Add(new XyzLayer
+			{
+				Name = "Road map (Google)",
+				UriTemplate = @"http://mt0.google.com/vt/x={x}&y={y}&z={z}",
+				Opacity = 100.0,
+				IsVisible = false
+			});
+
+
+
+			return config;
+		}
+
 
 		private static MapConfig GetSampleConfig()
 		{
@@ -255,92 +316,43 @@ namespace MapViewer
 				Opacity = 100.0,
 				IsVisible = false
 			});
-			
-
 
 			return config;
 		}
 
-		private string SerializeConfig(MapConfig config)
+		private async void OpenButton_Click(object sender, RoutedEventArgs e)
 		{
-			return JsonSerializer.Serialize(config);
-		}
-
-		private void AddLayers(MapConfig config)
-		{
-			foreach (LayerBase layer in config.Layers)
+			var file = await OpenJsonFileAsync(this);
+			if (file != null)
 			{
-				LayerSettingsControl control;
+				string content = await FileIO.ReadTextAsync(file);
+				// Do something with the JSON content
 
-				switch (layer)
+				MapConfig? config = JsonSerializer.Deserialize<MapConfig>(content);
+
+				if (config != null)
 				{
-					case WmsLayer wmsLayer:
-						WmsImageLayer wmsImageLayer = new()
-						{
-							ServiceUri = new Uri(wmsLayer.ServiceUri),
-							WmsLayers = wmsLayer.Layers
-						};
-						
-						control = new(wmsImageLayer, Map)
-						{
-							LayerName = layer.Name,
-							IsLayerEnabled = layer.IsVisible,
-							LayerOpacity = layer.Opacity,
-						};
-
-						LayersStackPanel.Children.Add(control);
-						break;
-
-					case WmtsLayer wmtsLayer:
-						WmtsTileLayer wmtsTileLayer = new()
-						{
-							CapabilitiesUri = new Uri(wmtsLayer.CapabilitiesUri),
-							SourceName = layer.Name
-						};
-						
-						control = new(wmtsTileLayer, Map)
-						{
-							LayerName = layer.Name,
-							IsLayerEnabled = layer.IsVisible,
-							LayerOpacity = layer.Opacity,
-						};
-
-						LayersStackPanel.Children.Add(control);
-						break;
-
-					case XyzLayer xyzLayer:
-						MapTileLayer mapTileLayer = new()
-						{
-							TileSource = new TileSource() { UriTemplate = xyzLayer.UriTemplate },
-							SourceName = layer.Name,
-						};
-						
-						control = new(mapTileLayer, Map)
-						{
-							LayerName = layer.Name,
-							IsLayerEnabled = layer.IsVisible,
-							LayerOpacity = layer.Opacity,
-						};
-						LayersStackPanel.Children.Add(control);
-						break;
-					case TmsLayer tmsLayer:
-						MapTileLayer tileMapLayer = new()
-						{
-							TileSource = new TmsTileSource() { UriTemplate = tmsLayer.UriTemplate },
-							SourceName = layer.Name,
-						};
-
-						control = new(tileMapLayer, Map)
-						{
-							LayerName = layer.Name,
-							IsLayerEnabled = layer.IsVisible,
-							LayerOpacity = layer.Opacity,
-						};
-						LayersStackPanel.Children.Add(control);
-						break;
-
+					LayerCollectionControl collection = new(config) { Map = Map, HeaderText = file.DisplayName };
+					LayersStackPanel.Children.Add(collection);
 				}
 			}
+		}
+
+		public async Task<StorageFile?> OpenJsonFileAsync(Window window)
+		{
+			var picker = new FileOpenPicker();
+
+			// Needed to associate picker with your window
+			var hwnd = WindowNative.GetWindowHandle(window);
+			InitializeWithWindow.Initialize(picker, hwnd);
+
+			// Filter for JSON files
+			picker.FileTypeFilter.Add(".json");
+			picker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
+			picker.ViewMode = PickerViewMode.List;
+
+			StorageFile file = await picker.PickSingleFileAsync();
+			return file; // null if user cancels
 		}
 	}
 }

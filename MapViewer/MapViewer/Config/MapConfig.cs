@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace MapViewer.Config
 {
-	internal class MapConfig
+	public class MapConfig
 	{
 		public List<LayerBase> Layers { get; set; } = new();
 	}
@@ -12,7 +12,7 @@ namespace MapViewer.Config
 	[JsonDerivedType(typeof(WmsLayer), "WMS")]
 	[JsonDerivedType(typeof(WmtsLayer), "WMTS")]
 	[JsonDerivedType(typeof(XyzLayer), "XYZ")]
-	[JsonDerivedType(typeof(XyzLayer), "TMS")]
+	[JsonDerivedType(typeof(TmsLayer), "TMS")]
 
 	public abstract class LayerBase
 	{
