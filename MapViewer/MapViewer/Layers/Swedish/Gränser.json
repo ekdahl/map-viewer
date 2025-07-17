@@ -2,9 +2,9 @@
   "Layers": [
     {
       "$type": "WMS",
-      "ServiceUri": "https://karta.raa.se/lmfastighet?TRANSPARENT=true",
-      "Layers": "granser,text",
-      "Name": "Fastighetsgränser",
+      "ServiceUri": "https://karta.raa.se/geo/arkreg_v1.0/wms?TRANSPARENT=true",
+      "Layers": "landskap",
+      "Name": "Landskap",
       "Opacity": 100,
       "IsVisible": false
     },
@@ -12,15 +12,39 @@
       "$type": "WMS",
       "ServiceUri": "https://karta.raa.se/geo/arkreg_v1.0/wms?TRANSPARENT=true",
       "Layers": "socken",
-      "Name": "Sockengränser",
+      "Name": "Socknar",
+      "Opacity": 100,
+      "IsVisible": false
+    },
+    {
+      "$type": "WMS",
+      "ServiceUri": "https://karta.raa.se/lmfastighet?TRANSPARENT=true",
+      "Layers": "granser,text",
+      "Name": "Fastigheter",
       "Opacity": 100,
       "IsVisible": false
     },
     {
       "$type": "WMS",
       "ServiceUri": "https://karta.raa.se/geo/arkreg_v1.0/wms?TRANSPARENT=true",
-      "Layers": "landskap",
-      "Name": "Landskapsgränser",
+      "Layers": "Angransande_zonens_yttre_avgransningslinjer_Linje",
+      "Name": "Angränsande zon",
+      "Opacity": 100,
+      "IsVisible": false
+    },
+    {
+      "$type": "WMS",
+      "ServiceUri": "https://karta.raa.se/geo/arkreg_v1.0/wms?TRANSPARENT=true",
+      "Layers": "Ekonomiska_zonens_yttre_avgransningslinjer_linje",
+      "Name": "Ekonomisk zon",
+      "Opacity": 100,
+      "IsVisible": false
+    },
+    {
+      "$type": "WMS",
+      "ServiceUri": "https://karta.raa.se/geo/arkreg_v1.0/wms?TRANSPARENT=true",
+      "Layers": "Sjoterritoriets_grans_linje",
+      "Name": "Sjöterritoriet",
       "Opacity": 100,
       "IsVisible": false
     }

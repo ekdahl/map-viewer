@@ -4,9 +4,18 @@
       "$type": "WMS",
       "ServiceUri": "https://karta.raa.se/geo/arkreg_v1.0/wms?TRANSPARENT=true",
       "Layers": "arkreg_v1.0:publicerade_lamningar_centrumpunkt",
-      "Name": "Lämningar",
+      "Name": "Lämningar (symboler)",
+      "Opacity": 100,
+      "IsVisible": false
+    },
+    {
+      "$type": "WMS",
+      "ServiceUri": "https://karta.raa.se/geo/arkreg_v1.0/wms?TRANSPARENT=true",
+      "Layers": "arkreg_v1.0:publicerade_lamningar_geometrier",
+      "Name": "Lämningar (geometrier)",
       "Opacity": 100,
       "IsVisible": false
     }
+
   ]
 }

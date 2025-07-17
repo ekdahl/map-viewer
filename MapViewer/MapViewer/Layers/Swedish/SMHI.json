@@ -11,7 +11,7 @@
     {
       "$type": "WMS",
       "ServiceUri": "https://wpt-wts.smhi.se/tile/?service=WMS",
-      "Layers": "baltrad%3Aradarcomp-lightning-officialuseonly_scandinavia_wpt",
+      "Layers": "baltrad:radarcomp-lightning-officialuseonly_scandinavia_wpt",
       "Name": "Radar med blixt",
       "Opacity": 100,
       "IsVisible": false
