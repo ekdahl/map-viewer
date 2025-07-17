@@ -13,13 +13,6 @@
 
     <Grid x:Name="MainGrid">
 		<map:Map x:Name="Map" Center="58.1,14" ZoomLevel="15">
-			<!--map:MapTileLayer
-                TileSource="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
-                SourceName="OpenStreetMap"
-                        Description="© [OpenStreetMap contributors](http://www.openstreetmap.org/copyright)"/>
-			<map:WmsImageLayer ServiceUri="https://karta.raa.se/lmfastighet?TRANSPARENT=true" WmsLayers="granser,text"/>
-			<map:WmsImageLayer ServiceUri="https://karta.raa.se/geo/arkreg_v1.0/wms?TRANSPARENT=TRUE" WmsLayers="socken"/>
-			<map:WmsImageLayer ServiceUri="https://karta.raa.se/geo/arkreg_v1.0/wms?TRANSPARENT=TRUE" WmsLayers="landskap"/-->
 			<map:MapScale HorizontalAlignment="Center" VerticalAlignment="Bottom" Canvas.ZIndex="1000"/>
 		</map:Map>
 		<StackPanel x:Name="LayersStackPanel" Orientation="Vertical">
@@ -36,7 +29,9 @@
 				<StackPanel x:Name="LayersStackPanel" Orientation="Vertical" />
 			</Expander-->
 		</StackPanel>
-
+		<Button Click="GetLocationButton_Click" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5">
+			<FontIcon Glyph="&#xE81D;"/>
+		</Button>
 
 	</Grid>
 </Window>

@@ -9,6 +9,7 @@ using System.Text.Json;
 using System.Text.Unicode;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.DataTransfer;
+using Windows.Devices.Geolocation;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using WinRT.Interop;
@@ -28,8 +29,6 @@ namespace MapViewer
 			var windowId = Win32Interop.GetWindowIdFromWindow(hwnd);
 			var appWindow = AppWindow.GetFromWindowId(windowId);
 			appWindow.SetIcon("icon.ico");
-
-			//AddLayers(GetSampleConfig());
 
 			LayerCollectionControl baseMaps = new(GetBaseMaps()) { Map = Map, HeaderText = "Base maps" };
 
@@ -353,6 +352,35 @@ namespace MapViewer
 
 			StorageFile file = await picker.PickSingleFileAsync();
 			return file; // null if user cancels
+		}
+
+		public async Task<Location?> GetLocationAsync()
+		{
+			var accessStatus = await Geolocator.RequestAccessAsync();
+
+			if (accessStatus == GeolocationAccessStatus.Allowed)
+			{
+
+				var geolocator = new Geolocator { DesiredAccuracy = PositionAccuracy.High };
+				Geoposition pos = await geolocator.GetGeopositionAsync();
+
+				return new Location(pos.Coordinate.Point.Position.Latitude, pos.Coordinate.Point.Position.Longitude);
+			}
+			else
+			{
+				Console.WriteLine("Location access denied or unavailable.");
+				return null;
+			}
+		}
+
+		private async void GetLocationButton_Click(object sender, RoutedEventArgs e)
+		{
+			var location = await GetLocationAsync();
+
+			if (location != null)
+			{
+				Map.Center = location;
+			}
 		}
 	}
 }
