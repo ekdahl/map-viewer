@@ -341,20 +341,18 @@ namespace MapViewer
 		{
 			var picker = new FileOpenPicker();
 
-			// Needed to associate picker with your window
 			var hwnd = WindowNative.GetWindowHandle(window);
 			InitializeWithWindow.Initialize(picker, hwnd);
 
-			// Filter for JSON files
 			picker.FileTypeFilter.Add(".json");
 			picker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
 			picker.ViewMode = PickerViewMode.List;
 
 			StorageFile file = await picker.PickSingleFileAsync();
-			return file; // null if user cancels
+			return file;
 		}
 
-		public async Task<Location?> GetLocationAsync()
+		public static async Task<Location?> GetLocationAsync()
 		{
 			var accessStatus = await Geolocator.RequestAccessAsync();
 
