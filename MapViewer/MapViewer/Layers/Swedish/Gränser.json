@@ -2,9 +2,33 @@
   "Layers": [
     {
       "$type": "WMS",
+      "ServiceUri": "https://wpt-wts.smhi.se/mapproxy/service?service=WMS&transparent=true",
+      "Layers": "osm:countries_world_900913_ar",
+      "Name": "Länder",
+      "Opacity": 100,
+      "IsVisible": false
+    },
+    {
+      "$type": "WMS",
+      "ServiceUri": "https://wpt-wts.smhi.se/mom.map?service=WMS&transparent=true",
+      "Layers": "gsd:counties_sweden_3021_::2011-03-16",
+      "Name": "Län",
+      "Opacity": 100,
+      "IsVisible": false
+    },
+    {
+      "$type": "WMS",
       "ServiceUri": "https://karta.raa.se/geo/arkreg_v1.0/wms?TRANSPARENT=true",
       "Layers": "landskap",
       "Name": "Landskap",
+      "Opacity": 100,
+      "IsVisible": false
+    },
+    {
+      "$type": "WMS",
+      "ServiceUri": "https://wpt-wts.smhi.se/mom.map?service=WMS&transparent=true",
+      "Layers": "gsd:municipalities_sweden_3021_::2010-05-25",
+      "Name": "Kommuner",
       "Opacity": 100,
       "IsVisible": false
     },

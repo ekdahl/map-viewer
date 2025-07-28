@@ -3,7 +3,7 @@
     {
       "$type": "XYZ",
       "UriTemplate": "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
-      "Name": "Road map (OpenStreetMap)",
+      "Name": "Road map (OSM)",
       "Opacity": 100,
       "IsVisible": true
     },
@@ -18,6 +18,14 @@
       "$type": "XYZ",
       "UriTemplate": "http://mt0.google.com/vt/x={x}\u0026y={y}\u0026z={z}",
       "Name": "Road map (Google)",
+      "Opacity": 100,
+      "IsVisible": false
+    },
+    {
+      "$type": "WMS",
+      "ServiceUri": "https://wpt-wts.smhi.se/mapproxy/service?service=WMS",
+      "Layers": "osm-aurora-subtle-base-map-light-background",
+      "Name": "Aurora subtle light (OSM)",
       "Opacity": 100,
       "IsVisible": false
     }

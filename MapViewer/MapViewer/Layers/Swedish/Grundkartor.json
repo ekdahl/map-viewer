@@ -14,7 +14,8 @@
       "Name": "Nedtonad (Lantmäteriet)",
       "Opacity": 100,
       "IsVisible": false
-    },    {
+    },
+    {
       "$type": "TMS",
       "UriTemplate": "https://static.hitta.se/tile/v3/4/{z}/{x}/{y}?v=27032025",
       "Name": "Topografisk (Hitta.se)",

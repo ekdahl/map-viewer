@@ -1,0 +1,52 @@
+{
+  "Layers": [
+    {
+      "$type": "WMS",
+      "ServiceUri": "https://wpt-wts.smhi.se/mapproxy/service?service=WMS&transparent=true",
+      "Layers": "ahyfo:rivers_sweden_3006",
+      "Name": "Vattendrag",
+      "Opacity": 100,
+      "IsVisible": false
+    },
+    {
+      "$type": "WMS",
+      "ServiceUri": "https://wpt-wts.smhi.se/mapproxy/service?service=WMS&transparent=true",
+      "Layers": "ahyfo:places_sweden_3006",
+      "Name": "Samhällen",
+      "Opacity": 100,
+      "IsVisible": false
+    },
+    {
+      "$type": "WMS",
+      "ServiceUri": "https://wpt-wts.smhi.se/mapproxy/service?service=WMS&transparent=true",
+      "Layers": "lm:topografisk-webbkarta_sweden_900913_nedtonad-kommunikation",
+      "Name": "Vägnät",
+      "Opacity": 100,
+      "IsVisible": false
+    },
+    {
+      "$type": "WMS",
+      "ServiceUri": "https://wpt-wts.smhi.se/mapproxy/service?service=WMS&transparent=true",
+      "Layers": "lm:topografisk-webbkarta_sweden_900913_nedtonad-jarnvag",
+      "Name": "Järnvägar",
+      "Opacity": 100,
+      "IsVisible": false
+    },
+    {
+      "$type": "WMS",
+      "ServiceUri": "https://wpt-wts.smhi.se/mapproxy/service?service=WMS&transparent=true",
+      "Layers": "lm:topografisk-webbkarta_sweden_900913_nedtonad-kraftledningar",
+      "Name": "Kraftledningar",
+      "Opacity": 100,
+      "IsVisible": false
+    },
+    {
+      "$type": "WMS",
+      "ServiceUri": "https://wpt-wts.smhi.se/mapproxy/service?service=WMS&transparent=true",
+      "Layers": "lm:topografisk-webbkarta_sweden_900913_nedtonad-bebyggelse",
+      "Name": "Bebyggelse",
+      "Opacity": 100,
+      "IsVisible": false
+    }
+  ]
+}
