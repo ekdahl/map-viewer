@@ -3,7 +3,6 @@ using MapViewer.Config;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System;
-using System.Linq;
 
 namespace MapViewer
 {
@@ -45,9 +44,9 @@ namespace MapViewer
 
 							control = new(wmsImageLayer, Map)
 							{
-								LayerName = layer.Name,
-								IsLayerEnabled = layer.IsVisible,
-								LayerOpacity = layer.Opacity,
+								LayerName = layer.Name ?? string.Empty,
+								IsLayerEnabled = layer.IsVisible ?? false,
+								LayerOpacity = layer.Opacity ?? 100.0,
 							};
 
 							LayersStackPanel.Children.Add(control);
@@ -62,9 +61,9 @@ namespace MapViewer
 
 							control = new(wmtsTileLayer, Map)
 							{
-								LayerName = layer.Name,
-								IsLayerEnabled = layer.IsVisible,
-								LayerOpacity = layer.Opacity,
+								LayerName = layer.Name ?? string.Empty,
+								IsLayerEnabled = layer.IsVisible ?? false,
+								LayerOpacity = layer.Opacity ?? 100.0,
 							};
 
 							LayersStackPanel.Children.Add(control);
@@ -79,9 +78,9 @@ namespace MapViewer
 
 							control = new(mapTileLayer, Map)
 							{
-								LayerName = layer.Name,
-								IsLayerEnabled = layer.IsVisible,
-								LayerOpacity = layer.Opacity,
+								LayerName = layer.Name ?? string.Empty,
+								IsLayerEnabled = layer.IsVisible ?? false,
+								LayerOpacity = layer.Opacity ?? 100.0,
 							};
 							LayersStackPanel.Children.Add(control);
 							break;
@@ -94,9 +93,9 @@ namespace MapViewer
 
 							control = new(tileMapLayer, Map)
 							{
-								LayerName = layer.Name,
-								IsLayerEnabled = layer.IsVisible,
-								LayerOpacity = layer.Opacity,
+								LayerName = layer.Name ?? string.Empty,
+								IsLayerEnabled = layer.IsVisible ?? false,
+								LayerOpacity = layer.Opacity ?? 100.0,
 							};
 							LayersStackPanel.Children.Add(control);
 							break;
@@ -126,13 +125,6 @@ namespace MapViewer
 		{
 			if (this.Parent is Panel parentPanel)
 			{
-				/*foreach (LayerSettingsControl layerControl in LayersStackPanel.Children.OfType<LayerSettingsControl>())
-				{
-					if (layerControl.IsEnabled)
-					{
-						layerControl.IsEnabled = false;
-					}
-				}*/
 				parentPanel.Children.Remove(this);
 			}
 		}
