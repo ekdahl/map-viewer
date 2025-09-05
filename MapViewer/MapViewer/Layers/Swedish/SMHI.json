@@ -1,28 +1,69 @@
 {
-  "Layers": [
-    {
-      "$type": "WMS",
-      "ServiceUri": "https://opendata-view.smhi.se/SMHI_vatten_restricted/Vattenforekomster_2022/wms?transparent=true",
-      "Layers": "Vattenforekomster_2022",
-      "Name": "Vattenförekomster 2022",
-      "Opacity": 100,
-      "IsVisible": false
-    },
-    {
-      "$type": "WMS",
-      "ServiceUri": "https://wpt-wts.smhi.se/mom.map?service=WMS",
-      "Layers": "map",
-      "Name": "Map",
-      "Opacity": 100,
-      "IsVisible": false
-    },
-    {
-      "$type": "WMS",
-      "ServiceUri": "https://wpt-wts.smhi.se/tile/?service=WMS&srs=EPSG%3A4326&transparent=true",
-      "Layers": "baltrad:radarcomp-lightning-officialuseonly_scandinavia_wpt",
-      "Name": "Radar med blixt",
-      "Opacity": 100,
-      "IsVisible": false
-    }
-  ]
+	"Layers": [
+		{
+			"$type": "WMS",
+			"ServiceUri": "https://opendata-view.smhi.se/SMHI_vatten_restricted/Vattenforekomster_2022/wms?transparent=true",
+			"Layers": "Vattenforekomster_2022",
+			"Name": "Vattenförekomster 2022",
+			"Opacity": 100,
+			"IsVisible": false
+		},
+		{
+			"$type": "WMS",
+			"ServiceUri": "https://wpt-wts.smhi.se/mom.map?service=WMS",
+			"Layers": "map",
+			"Name": "Map",
+			"Opacity": 100,
+			"IsVisible": false
+		},
+		{
+			"$type": "WMS",
+			"ServiceUri": "https://wpt-wts.smhi.se/tile/?service=WMS&version=1.1.1&transparent=true&crs=EPSG:900913",
+			"Layers": "baltrad:radarcomp-lightning-officialuseonly_sweden_wpt",
+			"Name": "Radar med blixt Sverige (5 min)",
+			"Opacity": 50,
+			"IsVisible": false
+		},
+		{
+			"$type": "WMS",
+			"ServiceUri": "https://wpt-wts.smhi.se/tile/?service=WMS&version=1.1.1&transparent=true&crs=EPSG:900913",
+			"Layers": "baltrad:radarcomp-lightning-officialuseonly_scandinavia_wpt",
+			"Name": "Radar med blixt Norden (15 min)",
+			"Opacity": 50,
+			"IsVisible": false
+		},
+		{
+			"$type": "WMS",
+			"ServiceUri": "https://wpt-wts.smhi.se/tile/?service=WMS&version=1.1.1&transparent=true&crs=EPSG:900913",
+			"Layers": "smhi:lightning-officialuseonly-15m_sweden_wpt",
+			"Name": "Blixt (15 min)",
+			"Opacity": 50,
+			"IsVisible": false
+		},
+		{
+			"$type": "WMS",
+			"ServiceUri": "https://wpt-wts.smhi.se/mom.map?&service=WMS&version=1.1.1&transparent=true&crs=EPSG:900913",
+			"Layers": "sat:polar-sst_euron1_9999_",
+			"Name": "Ytvattentemperatur",
+			"Opacity": 50,
+			"IsVisible": false
+		},
+		{
+			"$type": "WMS",
+			"ServiceUri": "https://wpt-wts.smhi.se/mom.map?&service=WMS&version=1.1.1&crs=EPSG:900913&format=image/jpeg",
+			"Layers": "sat:baws-polar_nordic_3006_",
+			"Name": "Fotografisk vy",
+			"Opacity": 100,
+			"IsVisible": false
+		},
+		{
+			"$type": "WMS",
+			"ServiceUri": "https://wpt-wts.smhi.se/mom.map?&service=WMS&version=1.1.1&crs=EPSG:900913&format=image/jpeg",
+			"Layers": "sat:msg-daynightoverview_world_9992_",
+			"Name": "Moln",
+			"Opacity": 100,
+			"IsVisible": false
+		}
+
+	]
 }
