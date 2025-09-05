@@ -10,7 +10,7 @@
 	Unloaded="UserControl_Unloaded">
 
 	<StackPanel Orientation="Horizontal">
-		<TextBlock x:Name="NameTextBlock" Text="{x:Bind LayerName, Mode=OneWay}" VerticalAlignment="Center" MinWidth="180"/>
+		<TextBlock x:Name="NameTextBlock" Text="{x:Bind LayerName, Mode=OneWay}" VerticalAlignment="Center" MinWidth="200"/>
 		<ToggleSwitch x:Name="EnabledToggleSwitch" VerticalAlignment="Center" OnContent="" OffContent="" MinWidth="0" Toggled="EnabledToggleSwitch_Toggled"/>
 		<Slider x:Name="OpacitySlider" Grid.Column="2" Width="100" VerticalAlignment="Center" IsEnabled="{x:Bind EnabledToggleSwitch.IsOn, Mode=OneWay}"
 		    Minimum="0" Maximum="100" Value="100" SmallChange="1" LargeChange="10" ValueChanged="OpacitySlider_ValueChanged"/>
