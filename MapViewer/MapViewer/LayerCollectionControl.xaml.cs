@@ -36,11 +36,15 @@ namespace MapViewer
 					switch (layer)
 					{
 						case WmsLayer wmsLayer:
-							WmsImageLayer wmsImageLayer = new()
-							{
-								ServiceUri = new Uri(wmsLayer.ServiceUri),
-								WmsLayers = wmsLayer.Layers,
-							};
+							WmsImageLayer wmsImageLayer;
+
+							if (wmsLayer.ServiceUri.Contains("version=1.1.1", StringComparison.CurrentCultureIgnoreCase))
+								wmsImageLayer = new LegacyWmsImageLayer();
+							else
+								wmsImageLayer = new();
+
+							wmsImageLayer.ServiceUri = new Uri(wmsLayer.ServiceUri);
+							wmsImageLayer.WmsLayers = wmsLayer.Layers;
 
 							control = new(wmsImageLayer, Map)
 							{
