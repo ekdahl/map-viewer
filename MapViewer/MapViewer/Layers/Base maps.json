@@ -22,14 +22,6 @@
       "Opacity": 100,
       "IsVisible": false,
       "Subdomains": [ "mt0", "mt1", "mt2", "mt3" ]
-    },
-    {
-      "$type": "WMS",
-      "ServiceUri": "https://wpt-wts.smhi.se/mapproxy/service?service=WMS",
-      "Layers": "osm-aurora-subtle-base-map-light-background",
-      "Name": "Aurora subtle light (OSM)",
-      "Opacity": 100,
-      "IsVisible": false
     }
   ]
 }
