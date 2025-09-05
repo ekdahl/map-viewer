@@ -95,7 +95,7 @@ namespace MapViewer
 
 			config.Layers.Add(new XyzLayer
 			{
-				Name = "Topografisk (Lantm‰teriet)",
+				Name = "Topografisk (Lantm√§teriet)",
 				UriTemplate = @"https://minkarta.lantmateriet.se/map/topowebbcache?layer=topowebb&tilematrixset=3857&Service=WMTS&Request=GetTile&TileMatrix={z}&TileCol={x}&TileRow={y}",
 				//UriTemplate = @"https://karta.raa.se/lmtopowebb/1.0.0/topowebb/default/3857/{z}/{y}/{x}.png",
 				Opacity = 100.0,
@@ -112,7 +112,7 @@ namespace MapViewer
 
 			config.Layers.Add(new XyzLayer
 			{
-				Name = "Terr‰ng (Google)",
+				Name = "Terr√§ng (Google)",
 				UriTemplate = @"http://mt1.google.com/vt/lyrs=p&x={x}&y={y}&z={z}",
 				Opacity = 100.0,
 				IsVisible = false
@@ -129,7 +129,7 @@ namespace MapViewer
 
 			config.Layers.Add(new TmsLayer
 			{
-				Name = "V‰gkarta (Hitta.se)",
+				Name = "V√§gkarta (Hitta.se)",
 				UriTemplate = @"https://static.hitta.se/tile/v3/0/{z}/{x}/{y}?v=27032025",
 				Opacity = 100.0,
 				IsVisible = false
@@ -137,14 +137,14 @@ namespace MapViewer
 
 			config.Layers.Add(new TmsLayer
 			{
-				Name = "V‰gkarta (Eniro)",
+				Name = "V√§gkarta (Eniro)",
 				UriTemplate = @"http://map.eniro.com/geowebcache/service/tms1.0.0/map/{z}/{x}/{y}.png",
 				Opacity = 100.0,
 				IsVisible = false
 			});
 			config.Layers.Add(new XyzLayer
 			{
-				Name = "V‰gkarta (Google)",
+				Name = "V√§gkarta (Google)",
 				UriTemplate = @"http://mt0.google.com/vt/x={x}&y={y}&z={z}",
 				Opacity = 100.0,
 				IsVisible = false
@@ -152,7 +152,7 @@ namespace MapViewer
 
 			config.Layers.Add(new XyzLayer
 			{
-				Name = "V‰gkarta (OpenStreetMap)",
+				Name = "V√§gkarta (OpenStreetMap)",
 				UriTemplate = @"https://tile.openstreetmap.org/{z}/{x}/{y}.png",
 				Opacity = 100.0,
 				IsVisible = false
@@ -171,7 +171,7 @@ namespace MapViewer
 
 			config.Layers.Add(new WmsLayer
 			{
-				Name = "Flygbild (Lantm‰teriet)",
+				Name = "Flygbild (Lantm√§teriet)",
 				ServiceUri = "https://minkarta.lantmateriet.se/map/ortofoto",
 				Layers = "Ortofoto_0.5,Ortofoto_0.4,Ortofoto_0.25,Ortofoto_0.16",
 				Opacity = 100.0,
@@ -222,7 +222,7 @@ namespace MapViewer
 
 			config.Layers.Add(new WmsLayer
 			{
-				Name = "Sjˆkort (Lantm‰teriet)",
+				Name = "Sj√∂kort (Lantm√§teriet)",
 				ServiceUri = "https://karta.raa.se/sjokort",
 				Layers = "OgcWmsLayer0",
 				Opacity = 100.0,
@@ -231,7 +231,7 @@ namespace MapViewer
 
 			config.Layers.Add(new TmsLayer
 			{
-				Name = "Sjˆkort (Eniro)",
+				Name = "Sj√∂kort (Eniro)",
 				UriTemplate = @"http://map.eniro.com/geowebcache/service/tms1.0.0/nautical/{z}/{x}/{y}.jpeg",
 				Opacity = 100.0,
 				IsVisible = false
@@ -257,7 +257,7 @@ namespace MapViewer
 
 			config.Layers.Add(new WmsLayer
 			{
-				Name = "Fastighetsgr‰nser",
+				Name = "Fastighetsgr√§nser",
 				ServiceUri = "https://karta.raa.se/lmfastighet?TRANSPARENT=true",
 				Layers = "granser,text",
 				Opacity = 100.0,
@@ -266,7 +266,7 @@ namespace MapViewer
 
 			config.Layers.Add(new WmsLayer
 			{
-				Name = "Sockengr‰nser",
+				Name = "Sockengr√§nser",
 				ServiceUri = "https://karta.raa.se/geo/arkreg_v1.0/wms?TRANSPARENT=true",
 				Layers = "socken",
 				Opacity = 100.0,
@@ -275,7 +275,7 @@ namespace MapViewer
 
 			config.Layers.Add(new WmsLayer
 			{
-				Name = "Landskapsgr‰nser",
+				Name = "Landskapsgr√§nser",
 				ServiceUri = "https://karta.raa.se/geo/arkreg_v1.0/wms?TRANSPARENT=true",
 				Layers = "landskap",
 				Opacity = 100.0,
@@ -284,7 +284,7 @@ namespace MapViewer
 
 			config.Layers.Add(new WmsLayer
 			{
-				Name = "L‰mningar",
+				Name = "L√§mningar",
 				ServiceUri = "https://karta.raa.se/geo/arkreg_v1.0/wms?TRANSPARENT=true",
 				Layers = "arkreg_v1.0:publicerade_lamningar_centrumpunkt",
 				Opacity = 100.0,
@@ -293,7 +293,7 @@ namespace MapViewer
 
 			config.Layers.Add(new WmsLayer
 			{
-				Name = "Befolkningst‰thet",
+				Name = "Befolkningst√§thet",
 				ServiceUri = "https://minkarta.lantmateriet.se/map/scb?TRANSPARENT=true",
 				Layers = "PD.StatisticalDistribution.TotalPopulation",
 				Opacity = 50.0,
@@ -327,12 +327,17 @@ namespace MapViewer
 				string content = await FileIO.ReadTextAsync(file);
 				// Do something with the JSON content
 
-				MapConfig? config = JsonSerializer.Deserialize<MapConfig>(content);
-
-				if (config != null)
+				try
 				{
-					LayerCollectionControl collection = new(config) { Map = Map, HeaderText = file.DisplayName };
-					LayersStackPanel.Children.Add(collection);
+					MapConfig? config = JsonSerializer.Deserialize<MapConfig>(content);
+					if (config != null)
+					{
+						LayerCollectionControl collection = new(config) { Map = Map, HeaderText = file.DisplayName };
+						LayersStackPanel.Children.Add(collection);
+					}
+				}
+				catch
+				{
 				}
 			}
 		}
