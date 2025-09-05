@@ -56,7 +56,7 @@ namespace MapViewer
 							WmtsTileLayer wmtsTileLayer = new()
 							{
 								CapabilitiesUri = new Uri(wmtsLayer.CapabilitiesUri),
-								SourceName = layer.Name
+								SourceName = layer.Name,
 							};
 
 							control = new(wmtsTileLayer, Map)
@@ -76,6 +76,11 @@ namespace MapViewer
 								SourceName = layer.Name,
 							};
 
+							if (xyzLayer.Subdomains != null && xyzLayer.Subdomains.Length > 0)
+							{
+								mapTileLayer.TileSource.Subdomains = xyzLayer.Subdomains;
+							}
+
 							control = new(mapTileLayer, Map)
 							{
 								LayerName = layer.Name ?? string.Empty,
@@ -90,6 +95,11 @@ namespace MapViewer
 								TileSource = new TmsTileSource() { UriTemplate = tmsLayer.UriTemplate },
 								SourceName = layer.Name,
 							};
+
+							if (tmsLayer.Subdomains != null && tmsLayer.Subdomains.Length > 0)
+							{
+								tileMapLayer.TileSource.Subdomains = tmsLayer.Subdomains;
+							}
 
 							control = new(tileMapLayer, Map)
 							{

@@ -48,5 +48,6 @@ namespace MapViewer.Config
 	public class TmsLayer : LayerBase
 	{
 		public string UriTemplate { get; set; } = string.Empty; // e.g. https://.../{z}/{x}/{y}.png
+		public string[]? Subdomains { get; set; } // e.g. ["mt0", "mt1", "mt2", "mt3"]
 	}
 }

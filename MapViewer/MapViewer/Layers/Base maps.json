@@ -9,17 +9,19 @@
     },
     {
       "$type": "XYZ",
-      "UriTemplate": "http://mt1.google.com/vt/lyrs=p&x={x}&y={y}&z={z}",
+      "UriTemplate": "http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}",
       "Name": "Terrain (Google)",
       "Opacity": 100,
-      "IsVisible": false
+      "IsVisible": false,
+      "Subdomains": [ "mt0", "mt1", "mt2", "mt3" ]
     },
     {
       "$type": "XYZ",
-      "UriTemplate": "http://mt0.google.com/vt/x={x}&y={y}&z={z}",
+      "UriTemplate": "http://{s}.google.com/vt/x={x}&y={y}&z={z}",
       "Name": "Road map (Google)",
       "Opacity": 100,
-      "IsVisible": false
+      "IsVisible": false,
+      "Subdomains": [ "mt0", "mt1", "mt2", "mt3" ]
     },
     {
       "$type": "WMS",
