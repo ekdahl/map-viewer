@@ -44,7 +44,7 @@ namespace MapViewer
 								wmsImageLayer = new();
 
 							wmsImageLayer.ServiceUri = new Uri(wmsLayer.ServiceUri);
-							wmsImageLayer.WmsLayers = wmsLayer.Layers;
+							wmsImageLayer.RequestLayers = wmsLayer.Layers;
 
 							control = new(wmsImageLayer, Map)
 							{

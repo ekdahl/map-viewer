@@ -18,7 +18,7 @@ namespace MapViewer
 			_map = map;
 		}
 
-		public LayerSettingsControl(MapTileLayerBase layer, Map map)
+		public LayerSettingsControl(MapTilePyramidLayer layer, Map map)
 		{
 			InitializeComponent();
 
