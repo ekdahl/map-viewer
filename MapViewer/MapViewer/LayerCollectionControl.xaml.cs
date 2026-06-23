@@ -76,13 +76,13 @@ namespace MapViewer
 						case XyzLayer xyzLayer:
 							MapTileLayer mapTileLayer = new()
 							{
-								TileSource = new TileSource() { UriTemplate = xyzLayer.UriTemplate },
+								TileSource = TileSource.Parse(xyzLayer.UriTemplate),
 								SourceName = layer.Name,
 							};
 
 							if (xyzLayer.Subdomains != null && xyzLayer.Subdomains.Length > 0)
 							{
-								mapTileLayer.TileSource.Subdomains = xyzLayer.Subdomains;
+								(mapTileLayer.TileSource as UriTileSource)?.Subdomains = xyzLayer.Subdomains;
 							}
 
 							control = new(mapTileLayer, Map)
@@ -102,7 +102,7 @@ namespace MapViewer
 
 							if (tmsLayer.Subdomains != null && tmsLayer.Subdomains.Length > 0)
 							{
-								tileMapLayer.TileSource.Subdomains = tmsLayer.Subdomains;
+								(tileMapLayer.TileSource as TmsTileSource)?.Subdomains = tmsLayer.Subdomains;
 							}
 
 							control = new(tileMapLayer, Map)

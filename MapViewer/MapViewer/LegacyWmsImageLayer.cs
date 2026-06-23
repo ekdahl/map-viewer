@@ -1,12 +1,14 @@
 using MapControl;
+using System;
 
 namespace MapViewer
 {
 	internal partial class LegacyWmsImageLayer : WmsImageLayer
 	{
-		protected override string GetMapRequestUri(BoundingBox boundingBox)
+		protected override Uri GetMapRequestUri(Rect bbox)
 		{
-			return base.GetMapRequestUri(boundingBox).Replace("CRS=", "SRS=");
+			string uriString = base.GetMapRequestUri(bbox).AbsoluteUri;
+			return new Uri(uriString.Replace("CRS=", "SRS="));
 		}
 	}
 }
